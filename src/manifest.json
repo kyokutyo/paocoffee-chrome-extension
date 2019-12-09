@@ -1,16 +1,24 @@
 {
-  "name": "Chrome Extension Webpack",
-  "options_page": "options.html",
-  "background": {
-    "page": "background.html"
-  },
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon-34.png"
-  },
-  "icons": {
-    "128": "icon-128.png"
-  },
   "manifest_version": 2,
+  "name": "Chrome Extension PaoCoffee",
+  "description": "select 細煎り and sort by price",
+  "icons": {
+    "128": "icon-16.png"
+  },
+  "permissions": [
+    "tabs",
+    "https://www.paocoffee.co.jp/coffee_*.html"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.paocoffee.co.jp/coffee_*.html"
+      ],
+      "js": [
+        "background.bundle.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
